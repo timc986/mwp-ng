@@ -11,13 +11,13 @@ export class HomeComponent implements OnInit {
   constructor(private httpBaseService: HttpBaseService) { }
 
   ngOnInit() {
-    this.httpBaseService.Get('http://fairhuman.co.uk/api/products').subscribe(
-      (data) => {
-        console.log('data :', data);
-      },
-      error => {
-        console.log('error :', error);
-      });
+    // this.httpBaseService.Get('http://fairhuman.co.uk/api/products').subscribe(
+    //   (data) => {
+    //     console.log('data :', data);
+    //   },
+    //   error => {
+    //     console.log('error :', error);
+    //   });
   }
 
 }
