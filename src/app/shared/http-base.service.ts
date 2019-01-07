@@ -15,17 +15,26 @@ export class HttpBaseService {
     return this.http.get(url/*, options*/);
   }
 
-  // public Post(url: string, body: any){
-  //   const options = new RequestOptions({
-  //     method: RequestMethod.Post,
-  //     headers: this.GetHeaders(),
-  //     body: JSON.stringify(body),
-  //     url: url
-  //   });
-  //   return this.http.request(new Request(options));
-  // }
+  public Post(url: string, body: any) {
+    return this.http.post<any>(url, JSON.stringify(body), this.GetHeaders());
 
-  private GetHeaders(): Headers {
+    // const options = new RequestOptions({
+    //   method: RequestMethod.Post,
+    //   headers: this.GetHeaders(),
+    //   body: JSON.stringify(body),
+    //   url: url
+    // });
+    // return this.http.request(new Request(options));
+  }
+
+  private GetHeaders(): any {
+    const httpOptions = {
+      headers: new Headers({
+        'Content-Type':  'application/json',
+      })
+    };
+    return httpOptions;
+
     return new Headers({
       'Content-Type': 'application/json',
       'Accept': 'application/json'/*,
