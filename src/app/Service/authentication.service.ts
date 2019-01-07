@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpBaseService } from '../shared/http-base.service';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 @Injectable({

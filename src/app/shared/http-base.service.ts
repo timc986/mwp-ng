@@ -16,7 +16,7 @@ export class HttpBaseService {
   }
 
   public Post(url: string, body: any) {
-    return this.http.post<any>(url, JSON.stringify(body), this.GetHeaders());
+    return this.http.post<any>(url, body, this.GetOptions());
 
     // const options = new RequestOptions({
     //   method: RequestMethod.Post,
@@ -27,18 +27,15 @@ export class HttpBaseService {
     // return this.http.request(new Request(options));
   }
 
-  private GetHeaders(): any {
-    const httpOptions = {
-      headers: new Headers({
-        'Content-Type':  'application/json',
-      })
-    };
-    return httpOptions;
+  private GetOptions(): any {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return options;
 
-    return new Headers({
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'/*,
-        'Authorization': 'Bearer ' + this.oauthService.getAccessToken()*/
-    });
+    // return new Headers({
+    //   'Content-Type': 'application/json',
+    //   'Accept': 'application/json'/*,
+    //     'Authorization': 'Bearer ' + this.oauthService.getAccessToken()*/
+    // });
   }
 }
