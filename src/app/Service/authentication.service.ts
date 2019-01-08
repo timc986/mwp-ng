@@ -47,8 +47,28 @@ export class AuthenticationService {
 
   public logout() {
     localStorage.removeItem('currentUser');
-    this.currentUserSubject = null;
-    this.currentUser = null;
+    this.currentUserSubject = new BehaviorSubject<User>(null);
+    this.currentUser = this.currentUserSubject.asObservable();
     this.router.navigate(['/login']);
+  }
+
+  public register(name: string, email: string, password: string): Observable<any> {
+    return this.httpBaseService.Post('http://local.mwp.com/api/login/create', { name, email, password })
+      .pipe(
+        map(response => {
+          console.log('response: ', response);
+          // if (response && response.token) {
+          //   // store user details and jwt token in local storage to keep user logged in between page refreshes
+          //   localStorage.setItem('currentUser', JSON.stringify(response.user));
+          //   this.currentUserSubject.next(response.user);
+          // }
+
+          return response;
+        }),
+        catchError(error => {
+          console.log('error: ', error);
+          return throwError(error);
+        })
+      );
   }
 }
