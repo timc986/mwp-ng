@@ -9,6 +9,7 @@ import { MaterialModule } from './material.module';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RecordComponent } from './record/record.component';
+import { CreateRecordComponent } from './create-record/create-record.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { RecordComponent } from './record/record.component';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    RecordComponent
+    RecordComponent,
+    CreateRecordComponent
   ],
   imports: [
     BrowserModule,

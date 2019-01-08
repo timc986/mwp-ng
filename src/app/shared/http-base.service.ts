@@ -19,6 +19,10 @@ export class HttpBaseService {
     return this.http.post<any>(url, body, this.GetOptions());
   }
 
+  public PostWithAuth(url: string, body: any): Observable<any> {
+    return this.http.post<any>(url, body, this.GetOptionsWithAuth());
+  }
+
   private GetOptions(): any {
     const httpOptions = {
       headers: new HttpHeaders({
