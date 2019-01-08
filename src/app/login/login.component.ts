@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService, ) { }
+    private authenticationService: AuthenticationService ) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -45,9 +45,9 @@ export class LoginComponent implements OnInit {
 
     this.loading = true;
     this.authenticationService.login(this.f.email.value, this.f.password.value)
-      .pipe(first())
       .subscribe(
         data => {
+          console.log('data :', data);
           this.router.navigate([this.returnUrl]);
         },
         error => {

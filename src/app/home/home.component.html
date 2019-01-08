@@ -1,4 +1,6 @@
-<mat-toolbar color="primary">
+<button [disabled]="loading" class="btn btn-primary" (click)="logout()">Logout</button>
+<div>You are now logged in {{user.email}}</div>
+<!-- <mat-toolbar color="primary">
   <mat-toolbar-row>
     <mat-menu #menu="matMenu">
       <button mat-menu-item>
@@ -54,4 +56,4 @@
       <button mat-button>SHARE</button>
     </mat-card-actions>
   </mat-card>
-</div>
+</div> -->

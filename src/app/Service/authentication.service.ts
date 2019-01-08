@@ -1,21 +1,50 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpBaseService } from '../shared/http-base.service';
 import { map, catchError } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  constructor(private httpBaseService: HttpBaseService) { }
+  private currentUserSubject: BehaviorSubject<User>;
+  public currentUser: Observable<User>;
+
+  constructor(private httpBaseService: HttpBaseService, private router: Router) {
+    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUser = this.currentUserSubject.asObservable();
+  }
+
+  public get currentUserValue(): User {
+    return this.currentUserSubject.value;
+  }
 
   public login(email: string, password: string): Observable<any> {
     return this.httpBaseService.Post('http://local.mwp.com/api/login/login', { email, password })
       .pipe(
         map(response => {
           console.log('response: ', response);
+          if (response && response.token) {
+            // store user details and jwt token in local storage to keep user logged in between page refreshes
+            localStorage.setItem('currentUser', JSON.stringify(response.user));
+            this.currentUserSubject.next(response.user);
+          }
+
+          return response;
+        }),
+        catchError(error => {
+          console.log('error: ', error);
+          return throwError(error);
         })
       );
+  }
+
+  public logout() {
+    localStorage.removeItem('currentUser');
+
+    this.router.navigate(['/login']);
   }
 }

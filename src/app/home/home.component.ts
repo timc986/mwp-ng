@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpBaseService } from '../shared/http-base.service';
+import { AuthenticationService } from '../Service/authentication.service';
+import { User } from '../model/user';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +10,14 @@ import { HttpBaseService } from '../shared/http-base.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private httpBaseService: HttpBaseService) { }
+  public loading = false;
+  public user: User;
+
+  constructor(private httpBaseService: HttpBaseService, private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
+    console.log('home on init');
+    this.user = this.authenticationService.currentUserValue;
     // this.httpBaseService.Get('http://fairhuman.co.uk/api/products').subscribe(
     //   (data) => {
     //     console.log('data :', data);
@@ -18,6 +25,11 @@ export class HomeComponent implements OnInit {
     //   error => {
     //     console.log('error :', error);
     //   });
+  }
+
+  logout() {
+    this.authenticationService.logout();
+    console.log('logout');
   }
 
 }

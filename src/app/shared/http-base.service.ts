@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, Request, RequestOptions, RequestMethod } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,21 +17,15 @@ export class HttpBaseService {
     return this.http.get(url/*, options*/);
   }
 
-  public Post(url: string, body: any) {
+  public Post(url: string, body: any): Observable<any> {
     return this.http.post<any>(url, body, this.GetOptions());
-
-    // const options = new RequestOptions({
-    //   method: RequestMethod.Post,
-    //   headers: this.GetHeaders(),
-    //   body: JSON.stringify(body),
-    //   url: url
-    // });
-    // return this.http.request(new Request(options));
   }
 
   private GetOptions(): any {
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
+    const headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    const options = new RequestOptions({ headers: headers });
     return options;
 
     // return new Headers({
