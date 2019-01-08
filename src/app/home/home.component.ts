@@ -12,31 +12,15 @@ import { RecordModel } from '../model/record.model';
 })
 export class HomeComponent implements OnInit {
 
-  public loading = false;
+  public isLoading = false;
   public user: UserModel;
-  public records: RecordModel[] = [];
+
 
   constructor(private httpBaseService: HttpBaseService,
-    private authenticationService: AuthenticationService,
-    private recordService: RecordService) { }
+    private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
     this.user = this.authenticationService.currentUserValue;
-    this.recordService.getAllRecords().subscribe(
-      data => {
-        if (data && data.records) {
-          console.log('data :', data);
-          data.records.forEach(element => {
-            this.records.push(element);
-          });
-        }
-        console.log('this.records :', this.records);
-      },
-      error => {
-        console.log('error :', error);
-        // this.alertService.error(error);
-        this.loading = false;
-      });
   }
 
   logout() {
