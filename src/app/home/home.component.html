@@ -4,6 +4,12 @@
 <div>Last log in {{user.lastLogin}}</div>
 <div>User Group {{user.userGroupId}}</div>
 <div>User Role {{user.userRoleId}}</div>
+
+<div *ngFor="let record of records">
+  {{record.title}}
+  {{record.content}}
+  {{record.createdOn}}
+</div>
 <!-- <mat-toolbar color="primary">
   <mat-toolbar-row>
     <mat-menu #menu="matMenu">
