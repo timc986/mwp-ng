@@ -15,6 +15,10 @@ export class RecordComponent implements OnInit {
     private recordService: RecordService) { }
 
   ngOnInit() {
+    this.load();
+  }
+
+  load() {
     this.recordService.getAllRecords().subscribe(
       data => {
         if (data && data.records) {

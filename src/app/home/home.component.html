@@ -1,5 +1,5 @@
 
-<button [disabled]="loading" class="btn btn-primary" (click)="logout()">Logout</button>
+<button [disabled]="isLoading" class="btn btn-primary" (click)="logout()">Logout</button>
 <div>Welcome back {{user.name}}</div>
 <div>You are now logged as {{user.email}}</div>
 <div>Last log in {{user.lastLogin}}</div>

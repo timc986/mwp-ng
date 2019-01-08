@@ -43,7 +43,7 @@ export class CreateRecordComponent implements OnInit {
       .subscribe(
         data => {
           console.log('data :', data);
-          // need to reload the page
+          // need to reload
           // this.router.navigate(['']);
           this.loading = false;
         },
