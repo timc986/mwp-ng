@@ -19,7 +19,10 @@ export class AuthenticationService {
   }
 
   public get currentUserValue(): User {
-    return this.currentUserSubject.value;
+    if (this.currentUserSubject) {
+      return this.currentUserSubject.value;
+    }
+    return null;
   }
 
   public login(email: string, password: string): Observable<any> {
@@ -44,7 +47,8 @@ export class AuthenticationService {
 
   public logout() {
     localStorage.removeItem('currentUser');
-
+    this.currentUserSubject = null;
+    this.currentUser = null;
     this.router.navigate(['/login']);
   }
 }

@@ -16,7 +16,6 @@ export class HomeComponent implements OnInit {
   constructor(private httpBaseService: HttpBaseService, private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
-    console.log('home on init');
     this.user = this.authenticationService.currentUserValue;
     // this.httpBaseService.Get('http://fairhuman.co.uk/api/products').subscribe(
     //   (data) => {
