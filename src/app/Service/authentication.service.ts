@@ -3,22 +3,22 @@ import { Router } from '@angular/router';
 import { HttpBaseService } from '../shared/http-base.service';
 import { map, catchError } from 'rxjs/operators';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { User } from '../model/user';
+import { UserModel } from '../model/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  private currentUserSubject: BehaviorSubject<User>;
-  public currentUser: Observable<User>;
+  private currentUserSubject: BehaviorSubject<UserModel>;
+  public currentUser: Observable<UserModel>;
 
   constructor(private httpBaseService: HttpBaseService, private router: Router) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUserSubject = new BehaviorSubject<UserModel>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  public get currentUserValue(): User {
+  public get currentUserValue(): UserModel {
     if (this.currentUserSubject) {
       return this.currentUserSubject.value;
     }
@@ -47,7 +47,7 @@ export class AuthenticationService {
 
   public logout() {
     localStorage.removeItem('currentUser');
-    this.currentUserSubject = new BehaviorSubject<User>(null);
+    this.currentUserSubject = new BehaviorSubject<UserModel>(null);
     this.currentUser = this.currentUserSubject.asObservable();
     this.router.navigate(['/login']);
   }

@@ -2,7 +2,8 @@ import { RecordService } from './../service/record.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpBaseService } from '../shared/http-base.service';
 import { AuthenticationService } from '../Service/authentication.service';
-import { User } from '../model/user';
+import { UserModel } from '../model/user.model';
+import { RecordModel } from '../model/record.model';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,8 @@ import { User } from '../model/user';
 export class HomeComponent implements OnInit {
 
   public loading = false;
-  public user: User;
+  public user: UserModel;
+  public records: RecordModel[] = [];
 
   constructor(private httpBaseService: HttpBaseService,
     private authenticationService: AuthenticationService,
@@ -22,7 +24,13 @@ export class HomeComponent implements OnInit {
     this.user = this.authenticationService.currentUserValue;
     this.recordService.getAllRecords().subscribe(
       data => {
-        console.log('data :', data);
+        if (data && data.records) {
+          console.log('data :', data);
+          data.records.forEach(element => {
+            this.records.push(element);
+          });
+        }
+        console.log('this.records :', this.records);
       },
       error => {
         console.log('error :', error);
