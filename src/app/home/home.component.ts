@@ -1,9 +1,10 @@
 import { RecordService } from './../service/record.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpBaseService } from '../shared/http-base.service';
 import { AuthenticationService } from '../Service/authentication.service';
 import { UserModel } from '../model/user.model';
 import { RecordModel } from '../model/record.model';
+import { RecordComponent } from '../record/record.component';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ export class HomeComponent implements OnInit {
 
   public isLoading = false;
   public user: UserModel;
-
+  @ViewChild(RecordComponent) recordComponent: RecordComponent;
 
   constructor(private httpBaseService: HttpBaseService,
     private authenticationService: AuthenticationService) { }
@@ -26,6 +27,9 @@ export class HomeComponent implements OnInit {
   logout() {
     this.authenticationService.logout();
     console.log('logout');
+  }
+  reloadRecord() {
+    this.recordComponent.reload();
   }
 
 }

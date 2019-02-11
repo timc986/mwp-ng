@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RecordService } from '../service/record.service';
 import { Router } from '@angular/router';
@@ -14,6 +14,7 @@ export class CreateRecordComponent implements OnInit {
   public loading = false;
   public submitted = false;
   public returnUrl: string;
+  @Output() reload: EventEmitter<null> = new EventEmitter();
 
   constructor(private router: Router, private formBuilder: FormBuilder,
     private recordService: RecordService) { }
@@ -42,9 +43,10 @@ export class CreateRecordComponent implements OnInit {
       .subscribe(
         data => {
           console.log('data :', data);
-          // need to reload
-          // this.router.navigate(['']);
           this.loading = false;
+          this.reload.emit();
+          this.createRecordForm.reset();
+          this.submitted = false;
         },
         error => {
           console.log('error :', error);
@@ -52,5 +54,4 @@ export class CreateRecordComponent implements OnInit {
           this.loading = false;
         });
   }
-
 }

@@ -1,4 +1,3 @@
-
 <button [disabled]="isLoading" class="btn btn-primary" (click)="logout()">Logout</button>
 <div>Welcome back {{user.name}}</div>
 <div>You are now logged as {{user.email}}</div>
@@ -9,7 +8,7 @@
 Records:
 <app-record></app-record>
 
-<app-create-record></app-create-record>
+<app-create-record (reload)="reloadRecord()"></app-create-record>
 
 <!-- <mat-toolbar color="primary">
   <mat-toolbar-row>
