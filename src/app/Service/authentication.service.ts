@@ -14,7 +14,7 @@ export class AuthenticationService {
   public currentUser: Observable<UserModel>;
 
   constructor(private httpBaseService: HttpBaseService, private router: Router) {
-    this.currentUserSubject = new BehaviorSubject<UserModel>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUserSubject = new BehaviorSubject<UserModel>(JSON.parse(localStorage.getItem('currentMwpUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
@@ -32,7 +32,7 @@ export class AuthenticationService {
           console.log('response: ', response);
           if (response && response.user && response.user.token) {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('currentUser', JSON.stringify(response.user));
+            localStorage.setItem('currentMwpUser', JSON.stringify(response.user));
             this.currentUserSubject.next(response.user);
           }
 
@@ -46,7 +46,7 @@ export class AuthenticationService {
   }
 
   public logout() {
-    localStorage.removeItem('currentUser');
+    localStorage.removeItem('currentMwpUser');
     this.currentUserSubject = new BehaviorSubject<UserModel>(null);
     this.currentUser = this.currentUserSubject.asObservable();
     this.router.navigate(['/login']);
@@ -59,7 +59,7 @@ export class AuthenticationService {
           console.log('response: ', response);
           // if (response && response.token) {
           //   // store user details and jwt token in local storage to keep user logged in between page refreshes
-          //   localStorage.setItem('currentUser', JSON.stringify(response.user));
+          //   localStorage.setItem('currentMwpUser', JSON.stringify(response.user));
           //   this.currentUserSubject.next(response.user);
           // }
 
