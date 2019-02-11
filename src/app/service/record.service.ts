@@ -28,7 +28,7 @@ export class RecordService {
 
   public createRecord(title: string, content: string): Observable<any> {
     const user = this.authenticationService.currentUserValue;
-    return this.httpBaseService.PostWithAuth('http://local.mwp.com/api/record/create', { title, content })
+    return this.httpBaseService.Post('http://local.mwp.com/api/record/create', { title, content })
       .pipe(
         map(response => {
           console.log('response: ', response);
