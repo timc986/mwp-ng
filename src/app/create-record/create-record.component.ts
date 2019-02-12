@@ -39,7 +39,7 @@ export class CreateRecordComponent implements OnInit {
     console.log('f :', this.f);
 
     this.loading = true;
-    this.recordService.createRecord(this.f.title.value, this.f.content.value)
+    this.recordService.createRecord(this.f.title.value, this.f.content.value, 1)
       .subscribe(
         data => {
           console.log('data :', data);

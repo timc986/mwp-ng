@@ -24,8 +24,8 @@ export class RecordService {
       );
   }
 
-  public createRecord(title: string, content: string): Observable<any> {
-    return this.httpBaseService.Post('http://local.mwp.com/api/record/create', { title, content })
+  public createRecord(title: string, content: string, feelingId: number): Observable<any> {
+    return this.httpBaseService.Post('http://local.mwp.com/api/record/create', { title, content, feelingId })
       .pipe(
         map(response => {
           console.log('response: ', response);

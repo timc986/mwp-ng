@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { BrowserModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {
@@ -11,24 +11,24 @@ import {
   MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatListModule, MatInputModule, MatProgressBarModule,
   MatProgressSpinnerModule, MatRadioModule, MatRippleModule, MatSelectModule, MatSidenavModule, MatSlideToggleModule,
   MatSortModule, MatStepperModule, MatSliderModule, MatSnackBarModule, MatTabsModule, MatToolbarModule,
-  MatTooltipModule
+  MatTooltipModule,
+  GestureConfig
 } from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    BrowserModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
     MatTreeModule,
-    BrowserAnimationsModule,
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,
     MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,
-    MatCheckboxModule,
     MatChipsModule,
     MatDatepickerModule,
     MatDialogModule,
@@ -59,26 +59,22 @@ import {
     MatTreeModule,
   ],
   declarations: [],
-  providers: [],
+  providers: [{ provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig }],
   exports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
     MatTreeModule,
-    BrowserAnimationsModule,
     MatTableModule,
-    MatCheckboxModule,
-    MatTreeModule,
-    BrowserAnimationsModule,
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,
     MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,
-    MatCheckboxModule,
     MatChipsModule,
     MatDatepickerModule,
     MatDialogModule,
