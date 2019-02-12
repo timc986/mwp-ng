@@ -22,7 +22,8 @@ export class CreateRecordComponent implements OnInit {
   ngOnInit() {
     this.createRecordForm = this.formBuilder.group({
       title: ['', Validators.required],
-      content: ['', Validators.required]
+      content: ['', Validators.required],
+      feeling: ['3']
     });
   }
 
@@ -39,7 +40,7 @@ export class CreateRecordComponent implements OnInit {
     console.log('f :', this.f);
 
     this.loading = true;
-    this.recordService.createRecord(this.f.title.value, this.f.content.value, 1)
+    this.recordService.createRecord(this.f.title.value, this.f.content.value, this.f.feeling.value)
       .subscribe(
         data => {
           console.log('data :', data);
