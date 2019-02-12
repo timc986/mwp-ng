@@ -63,10 +63,22 @@ export class CreateRecordComponent implements OnInit {
 
     switch (value) {
       case 1: {
+        return 'very unhappy';
+      }
+      case 2: {
         return 'unhappy';
       }
+      case 3: {
+        return 'so so';
+      }
+      case 4: {
+        return 'happy';
+      }
+      case 5: {
+        return 'very happy';
+      }
       default: {
-        return 'not sure';
+        return 'so so';
       }
     }
   }
