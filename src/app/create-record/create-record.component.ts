@@ -55,4 +55,19 @@ export class CreateRecordComponent implements OnInit {
           this.loading = false;
         });
   }
+
+  formatFeeling(value: number | null) {
+    if (!value) {
+      return 0;
+    }
+
+    switch (value) {
+      case 1: {
+        return 'unhappy';
+      }
+      default: {
+        return 'not sure';
+      }
+    }
+  }
 }
