@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import { map } from 'rxjs/internal/operators/map';
-
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class AppConfig {
     private config: any;
     // private env: any;
 
-    constructor(private http: Http) { }
+    constructor(private http: HttpClient) { }
 
     public load(): Promise<any> {
-        const configPromise = this.http.get('config.json').pipe(map(response => response.json())).toPromise();
+        const configPromise = this.http.get('config.json').pipe().toPromise();
         configPromise.then(r => this.config = r);
         return configPromise;
     }

@@ -4,6 +4,7 @@ import { HttpBaseService } from '../shared/http-base.service';
 import { map, catchError } from 'rxjs/operators';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { UserModel } from '../model/user.model';
+import { AppConfig } from '../config/app-config';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<UserModel>;
   public currentUser: Observable<UserModel>;
 
-  constructor(private httpBaseService: HttpBaseService, private router: Router) {
+  constructor(private httpBaseService: HttpBaseService, private router: Router , private config: AppConfig) {
     this.currentUserSubject = new BehaviorSubject<UserModel>(JSON.parse(localStorage.getItem('currentMwpUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
@@ -26,7 +27,7 @@ export class AuthenticationService {
   }
 
   public login(email: string, password: string): Observable<any> {
-    return this.httpBaseService.Post('http://local.mwp.com/api/login/login', { email, password })
+    return this.httpBaseService.Post(this.config.apiEndPoint + 'login/login', { email, password })
       .pipe(
         map(response => {
           console.log('response: ', response);
@@ -53,7 +54,7 @@ export class AuthenticationService {
   }
 
   public register(name: string, email: string, password: string): Observable<any> {
-    return this.httpBaseService.Post('http://local.mwp.com/api/login/create', { name, email, password })
+    return this.httpBaseService.Post(this.config.apiEndPoint + 'login/create', { name, email, password })
       .pipe(
         map(response => {
           console.log('response: ', response);

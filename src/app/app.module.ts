@@ -2,8 +2,8 @@ import { AppConfig } from './config/app-config';
 import { JwtInterceptor } from './shared/jwt.interceptor';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpModule, Http } from '@angular/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,8 +31,7 @@ export function appConfigFactory(appConfig: AppConfig) {
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
-    HttpClientModule,
-    HttpModule
+    HttpClientModule
   ],
   providers: [
     {
@@ -45,7 +44,7 @@ export function appConfigFactory(appConfig: AppConfig) {
       multi: true,
       deps: [
         AppConfig,
-        Http
+        HttpClient
       ],
       useFactory: appConfigFactory
     },

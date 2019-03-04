@@ -13,10 +13,7 @@ export class RecordService {
   }
 
   public getAllRecords(): Observable<any> {
-    const url = this.config.apiEndPoint;
-    console.log('url: ', url);
-
-    return this.httpBaseService.Get(url + 'record/getbyuser')
+    return this.httpBaseService.Get(this.config.apiEndPoint + 'record/getbyuser')
       .pipe(
         map(response => {
           console.log('response: ', response);
@@ -30,7 +27,7 @@ export class RecordService {
   }
 
   public createRecord(title: string, content: string, feelingId: number): Observable<any> {
-    return this.httpBaseService.Post('http://local.mwp.com/api/record/create', { title, content, feelingId })
+    return this.httpBaseService.Post(this.config.apiEndPoint + 'record/create', { title, content, feelingId })
       .pipe(
         map(response => {
           console.log('response: ', response);
