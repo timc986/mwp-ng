@@ -1,3 +1,4 @@
+import { Feeling } from './../enum/feeling.enum';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RecordService } from '../service/record.service';
@@ -61,25 +62,29 @@ export class CreateRecordComponent implements OnInit {
       return 0;
     }
 
-    switch (value) {
-      case 1: {
-        return 'very unhappy';
-      }
-      case 2: {
-        return 'unhappy';
-      }
-      case 3: {
-        return 'so so';
-      }
-      case 4: {
-        return 'happy';
-      }
-      case 5: {
-        return 'very happy';
-      }
-      default: {
-        return 'so so';
-      }
-    }
+    const feelingName = Feeling[value];
+
+    return feelingName;
+
+    // switch (value) {
+    //   case 1: {
+    //     return 'very unhappy';
+    //   }
+    //   case 2: {
+    //     return 'unhappy';
+    //   }
+    //   case 3: {
+    //     return 'so so';
+    //   }
+    //   case 4: {
+    //     return 'happy';
+    //   }
+    //   case 5: {
+    //     return 'very happy';
+    //   }
+    //   default: {
+    //     return 'so so';
+    //   }
+    // }
   }
 }
