@@ -12,8 +12,7 @@ export class RecordComponent implements OnInit {
   public records: RecordModel[] = [];
   public isLoading = false;
 
-  constructor(
-    private recordService: RecordService) { }
+  constructor(private recordService: RecordService) { }
 
   ngOnInit() {
     this.load();
