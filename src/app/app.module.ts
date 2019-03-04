@@ -1,7 +1,9 @@
+import { AppConfig } from './config/app-config';
 import { JwtInterceptor } from './shared/jwt.interceptor';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpModule, Http } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +13,10 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RecordComponent } from './record/record.component';
 import { CreateRecordComponent } from './create-record/create-record.component';
+
+export function appConfigFactory(appConfig: AppConfig) {
+  return () => appConfig.load();
+}
 
 @NgModule({
   declarations: [
@@ -25,10 +31,25 @@ import { CreateRecordComponent } from './create-record/create-record.component';
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    HttpModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    },
+    {
+      provide: APP_INITIALIZER,
+      multi: true,
+      deps: [
+        AppConfig,
+        Http
+      ],
+      useFactory: appConfigFactory
+    },
+    AppConfig
   ],
   bootstrap: [AppComponent]
 })

@@ -1,3 +1,4 @@
+import { AppConfig } from '../config/app-config';
 import { Injectable } from '@angular/core';
 import { HttpBaseService } from '../shared/http-base.service';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
@@ -8,10 +9,14 @@ import { map, catchError } from 'rxjs/operators';
 })
 export class RecordService {
 
-  constructor(private httpBaseService: HttpBaseService) { }
+  constructor(private httpBaseService: HttpBaseService, private config: AppConfig) {
+  }
 
   public getAllRecords(): Observable<any> {
-    return this.httpBaseService.Get('http://local.mwp.com/api/record/getbyuser')
+    const url = this.config.apiEndPoint;
+    console.log('url: ', url);
+
+    return this.httpBaseService.Get(url + 'record/getbyuser')
       .pipe(
         map(response => {
           console.log('response: ', response);
