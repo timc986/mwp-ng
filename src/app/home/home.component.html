@@ -3,7 +3,7 @@
 <div>You are now logged as {{user.email}}</div>
 <div>Last log in {{user.lastLogin | date: 'dd/MM/yyyy H:mm'}}</div>
 <div>User Group {{user.userGroupId}}</div>
-<div>User Role {{user.userRoleId}}</div>
+<div>User Role {{user.userRoleId}} {{userRole[user.userRoleId]}}</div>
 
 Records:
 <app-record></app-record>

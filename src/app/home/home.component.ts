@@ -1,3 +1,4 @@
+import { UserRole } from './../enum/user-role.enum';
 import { RecordService } from './../service/record.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpBaseService } from '../shared/http-base.service';
@@ -15,6 +16,8 @@ export class HomeComponent implements OnInit {
 
   public isLoading = false;
   public user: UserModel;
+
+  public userRole = UserRole;
   @ViewChild(RecordComponent) recordComponent: RecordComponent;
 
   constructor(private httpBaseService: HttpBaseService,
