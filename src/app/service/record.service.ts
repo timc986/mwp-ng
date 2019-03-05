@@ -39,4 +39,18 @@ export class RecordService {
         })
       );
   }
+
+  public deleteRecord(recordId: number): Observable<any> {
+    return this.httpBaseService.Delete(this.config.apiEndPoint + 'record/delete?recordId=' + recordId)
+      .pipe(
+        map(response => {
+          console.log('response: ', response);
+          return response;
+        }),
+        catchError(error => {
+          console.log('error: ', error);
+          return throwError(error);
+        })
+      );
+  }
 }

@@ -19,6 +19,14 @@ export class HttpBaseService {
     return this.http.post<any>(url, body, this.GetOptions());
   }
 
+  public Put(url: string): Observable<any> {
+    return this.http.put<any>(url, this.GetOptions());
+  }
+
+  public Delete(url: string): Observable<any> {
+    return this.http.delete<any>(url, this.GetOptions());
+  }
+
   private GetOptions(): any {
     const httpOptions = {
       headers: new HttpHeaders({

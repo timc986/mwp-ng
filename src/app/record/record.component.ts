@@ -20,7 +20,7 @@ export class RecordComponent implements OnInit {
     this.load();
   }
 
-  load() {
+  public load() {
     this.recordService.getAllRecords().subscribe(
       data => {
         if (data && data.records) {
@@ -38,9 +38,21 @@ export class RecordComponent implements OnInit {
       });
   }
 
-  reload() {
+  public reload() {
     this.records = [];
     this.load();
+  }
+
+  public delete(recordId: number) {
+    console.log('recordId :', recordId);
+    this.recordService.deleteRecord(recordId).subscribe(
+      data => {
+        this.reload();
+      },
+      error => {
+        console.log('error :', error);
+      }
+    );
   }
 
 }
