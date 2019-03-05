@@ -9,7 +9,7 @@
   <mat-card class="record-card">
     <mat-card-header>
       <mat-card-title>{{record.title}}</mat-card-title>
-      <mat-card-subtitle>{{record.createdOn}}</mat-card-subtitle>
+      <mat-card-subtitle>{{record.createdOn | date: 'dd/MM/yyyy H:mm'}}</mat-card-subtitle>
       <mat-card-subtitle>Feeling: {{record.feelingId}} {{feeling[record.feelingId]}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
