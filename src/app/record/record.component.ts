@@ -13,6 +13,8 @@ export class RecordComponent implements OnInit {
   public records: RecordModel[] = [];
   public feeling = Feeling;
   public isLoading = false;
+  public isEditing = false;
+  public editingRecordId: number;
 
   constructor(private recordService: RecordService) { }
 
@@ -53,6 +55,23 @@ export class RecordComponent implements OnInit {
         console.log('error :', error);
       }
     );
+  }
+
+  public edit(recordId: number) {
+    this.editingRecordId = recordId;
+    this.isEditing = true;
+  }
+
+  public save() {
+    console.log('record :', this.records.find(r => r.id === this.editingRecordId));
+
+    this.isEditing = false;
+    this.editingRecordId = null;
+  }
+
+  public cancel() {
+    this.isEditing = false;
+    this.editingRecordId = null;
   }
 
 }
