@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class CreateRecordComponent implements OnInit {
 
   public createRecordForm: FormGroup;
-  public loading = false;
+  public isLoading = false;
   public submitted = false;
   public returnUrl: string;
   @Output() reload: EventEmitter<null> = new EventEmitter();
@@ -40,20 +40,21 @@ export class CreateRecordComponent implements OnInit {
 
     console.log('f :', this.f);
 
-    this.loading = true;
+    this.isLoading = true;
     this.recordService.createRecord(this.f.title.value, this.f.content.value, this.f.feeling.value)
       .subscribe(
         data => {
           console.log('data :', data);
-          this.loading = false;
+          this.isLoading = false;
           this.reload.emit();
           this.createRecordForm.reset();
           this.submitted = false;
+          this.isLoading = false;
         },
         error => {
           console.log('error :', error);
           // this.alertService.error(error);
-          this.loading = false;
+          this.isLoading = false;
         });
   }
 
