@@ -6,44 +6,46 @@
 
 <mat-spinner *ngIf="isLoading"></mat-spinner>
 
-<div *ngFor="let record of records">
-  <!-- <div class="container"> -->
-  <mat-card class="record-card" *ngIf="record.id !== editingRecordId">
-    <mat-card-header>
-      <mat-card-title>{{record.title}}</mat-card-title>
-      <mat-card-subtitle>{{record.createdOn | date: 'dd/MM/yyyy H:mm'}}</mat-card-subtitle>
-      <mat-card-subtitle>Feeling: {{record.feelingId}} {{feeling[record.feelingId]}}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <!-- <p> -->
-      {{record.content}}
-      <!-- </p>     -->
-    </mat-card-content>
-    <mat-card-actions>
-      <div>
-        <button mat-button (click)="edit(record.id)">Edit</button>
-        <button mat-button (click)="delete(record.id)">Remove</button>
-      </div>
-    </mat-card-actions>
-  </mat-card>
+<div *ngIf="!isLoading">
+  <div *ngFor="let record of records">
+    <!-- <div class="container"> -->
+    <mat-card class="record-card" *ngIf="record.id !== editingRecordId">
+      <mat-card-header>
+        <mat-card-title>{{record.title}}</mat-card-title>
+        <mat-card-subtitle>{{record.createdOn | date: 'dd/MM/yyyy H:mm'}}</mat-card-subtitle>
+        <mat-card-subtitle>Feeling: {{record.feelingId}} {{feeling[record.feelingId]}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <!-- <p> -->
+        {{record.content}}
+        <!-- </p>     -->
+      </mat-card-content>
+      <mat-card-actions>
+        <div>
+          <button mat-button (click)="edit(record.id)">Edit</button>
+          <button mat-button (click)="delete(record.id)">Remove</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
 
-  <mat-card class="record-card" *ngIf="isEditing && record.id === editingRecordId">
-    <mat-card-header>
-      <mat-card-title><input type="text" [(ngModel)]="record.title" /></mat-card-title>
-      <mat-card-subtitle>{{record.createdOn | date: 'dd/MM/yyyy H:mm'}}</mat-card-subtitle>
-      <mat-card-subtitle>Feeling: {{record.feelingId}} {{feeling[record.feelingId]}}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <!-- <p> -->
-      <textarea [(ngModel)]="record.content"></textarea>
-      <!-- </p>     -->
-    </mat-card-content>
-    <mat-card-actions>
-      <div class="save-button-group">
-        <button mat-button (click)="save()">Save</button>
-        <button mat-button (click)="cancel()">Cancel</button>
-      </div>
-    </mat-card-actions>
-  </mat-card>
-  <!-- </div> -->
+    <mat-card class="record-card" *ngIf="isEditing && record.id === editingRecordId">
+      <mat-card-header>
+        <mat-card-title><input type="text" [(ngModel)]="record.title" /></mat-card-title>
+        <mat-card-subtitle>{{record.createdOn | date: 'dd/MM/yyyy H:mm'}}</mat-card-subtitle>
+        <mat-card-subtitle>Feeling: {{record.feelingId}} {{feeling[record.feelingId]}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <!-- <p> -->
+        <textarea [(ngModel)]="record.content"></textarea>
+        <!-- </p>     -->
+      </mat-card-content>
+      <mat-card-actions>
+        <div class="save-button-group">
+          <button mat-button (click)="save()">Save</button>
+          <button mat-button (click)="cancel()">Cancel</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+    <!-- </div> -->
+  </div>
 </div>

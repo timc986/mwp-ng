@@ -2,7 +2,6 @@ import { Feeling } from './../enum/feeling.enum';
 import { Component, OnInit, Input } from '@angular/core';
 import { RecordService } from '../service/record.service';
 import { RecordModel } from '../model/record.model';
-import { ResourceLoader } from '@angular/compiler';
 
 @Component({
   selector: 'app-record',
