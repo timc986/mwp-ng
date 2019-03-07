@@ -23,6 +23,7 @@ export class RecordComponent implements OnInit {
   }
 
   public load() {
+    this.isLoading = true;
     this.recordService.getAllRecords().subscribe(
       data => {
         if (data && data.records) {
@@ -32,6 +33,7 @@ export class RecordComponent implements OnInit {
           });
         }
         console.log('this.records :', this.records);
+        this.isLoading = false;
       },
       error => {
         console.log('error :', error);
@@ -46,6 +48,7 @@ export class RecordComponent implements OnInit {
   }
 
   public delete(recordId: number) {
+    this.isLoading = true;
     console.log('recordId :', recordId);
     this.recordService.deleteRecord(recordId).subscribe(
       data => {
@@ -53,6 +56,7 @@ export class RecordComponent implements OnInit {
       },
       error => {
         console.log('error :', error);
+        this.isLoading = false;
       }
     );
   }

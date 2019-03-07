@@ -4,6 +4,8 @@
   {{record.createdOn}}
 </div> -->
 
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+
 <div *ngFor="let record of records">
   <!-- <div class="container"> -->
   <mat-card class="record-card" *ngIf="record.id !== editingRecordId">
