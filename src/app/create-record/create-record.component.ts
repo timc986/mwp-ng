@@ -3,6 +3,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RecordService } from '../service/record.service';
 import { Router } from '@angular/router';
+import { NotificationService } from '../service/notification.service';
 
 @Component({
   selector: 'app-create-record',
@@ -18,7 +19,8 @@ export class CreateRecordComponent implements OnInit {
   @Output() reload: EventEmitter<null> = new EventEmitter();
 
   constructor(private router: Router, private formBuilder: FormBuilder,
-    private recordService: RecordService) { }
+    private recordService: RecordService,
+    private notificationService: NotificationService) { }
 
   ngOnInit() {
     this.createRecordForm = this.formBuilder.group({
@@ -50,9 +52,12 @@ export class CreateRecordComponent implements OnInit {
           this.createRecordForm.reset();
           this.submitted = false;
           this.isLoading = false;
+
+          this.notificationService.success('Successfully created record');
         },
         error => {
           console.log('error :', error);
+          this.notificationService.error('Failed');
           // this.alertService.error(error);
           this.isLoading = false;
         });

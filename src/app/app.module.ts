@@ -1,9 +1,10 @@
+import { AuthenticationService } from './service/authentication.service';
+import { NotificationService } from './service/notification.service';
 import { AppConfig } from './config/app-config';
 import { JwtInterceptor } from './shared/jwt.interceptor';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
-import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RecordComponent } from './record/record.component';
 import { CreateRecordComponent } from './create-record/create-record.component';
+import { RecordService } from './service/record.service';
 
 export function appConfigFactory(appConfig: AppConfig) {
   return () => appConfig.load();
@@ -34,6 +36,9 @@ export function appConfigFactory(appConfig: AppConfig) {
     HttpClientModule
   ],
   providers: [
+    NotificationService,
+    RecordService,
+    AuthenticationService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,

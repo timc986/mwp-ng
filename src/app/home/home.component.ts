@@ -2,7 +2,7 @@ import { UserRole } from './../enum/user-role.enum';
 import { RecordService } from './../service/record.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpBaseService } from '../shared/http-base.service';
-import { AuthenticationService } from '../Service/authentication.service';
+import { AuthenticationService } from '../service/authentication.service';
 import { UserModel } from '../model/user.model';
 import { RecordModel } from '../model/record.model';
 import { RecordComponent } from '../record/record.component';

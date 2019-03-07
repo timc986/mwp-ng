@@ -2,6 +2,7 @@ import { Feeling } from './../enum/feeling.enum';
 import { Component, OnInit, Input } from '@angular/core';
 import { RecordService } from '../service/record.service';
 import { RecordModel } from '../model/record.model';
+import { NotificationService } from '../service/notification.service';
 
 @Component({
   selector: 'app-record',
@@ -15,7 +16,8 @@ export class RecordComponent implements OnInit {
   public isEditing = false;
   public editingRecordId: number;
 
-  constructor(private recordService: RecordService) { }
+  constructor(private recordService: RecordService,
+    private notificationService: NotificationService) { }
 
   ngOnInit() {
     this.load();
@@ -52,9 +54,11 @@ export class RecordComponent implements OnInit {
     this.recordService.deleteRecord(recordId).subscribe(
       data => {
         this.reload();
+        this.notificationService.success('Successfully removed record');
       },
       error => {
         console.log('error :', error);
+        this.notificationService.error('Failed');
         this.isLoading = false;
       }
     );

@@ -1,1 +1,11 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.success-snackbar {
+    background-color: rgb(95, 250, 160) !important;
+    color: rgb(65, 63, 63) !important;
+  }
+  
+  .error-snackbar {
+    background-color: rgb(247, 165, 178) !important;
+    color: rgb(65, 63, 63) !important;
+  }
