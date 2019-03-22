@@ -36,7 +36,8 @@ export class HomeComponent implements OnInit {
     console.log('logout');
   }
   reloadRecord() {
-    this.recordComponent.reload();
+    // this.recordComponent.reload();
+    this.onHome();
   }
 
   onHome() {
