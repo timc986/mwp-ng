@@ -14,6 +14,10 @@ import { RecordComponent } from '../record/record.component';
 })
 export class HomeComponent implements OnInit {
 
+  public isHome = true;
+  public isCreate = false;
+  public isAnalytics = false;
+
   public isLoading = false;
   public user: UserModel;
 
@@ -33,6 +37,24 @@ export class HomeComponent implements OnInit {
   }
   reloadRecord() {
     this.recordComponent.reload();
+  }
+
+  onHome() {
+    this.isHome = true;
+    this.isCreate = false;
+    this.isAnalytics = false;
+  }
+
+  onCreate() {
+    this.isHome = false;
+    this.isCreate = true;
+    this.isAnalytics = false;
+  }
+
+  onAnalytics() {
+    this.isHome = false;
+    this.isCreate = false;
+    this.isAnalytics = true;
   }
 
 }

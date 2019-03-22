@@ -11,19 +11,19 @@ Records:
 <app-create-record (reload)="reloadRecord()"></app-create-record>
 
 <div class="nav-bar">
-  <div>
-    <img src="./assets/images/home-filled.svg" />
-    <img src="./assets/images/home-outlined.svg" />
+  <div (click)="onHome()">
+    <img *ngIf="isHome" src="./assets/images/home-filled.svg" />
+    <img *ngIf="!isHome" src="./assets/images/home-outlined.svg" />
   </div>
 
-  <div>
-    <img src="./assets/images/create-filled.svg" />
-    <img src="./assets/images/create-outlined.svg" />
+  <div (click)="onCreate()">
+    <img *ngIf="isCreate" src="./assets/images/create-filled.svg" />
+    <img *ngIf="!isCreate" src="./assets/images/create-outlined.svg" />
   </div>
 
-  <div>
-    <img src="./assets/images/analytics-filled.svg" />
-    <img src="./assets/images/analytics-outlined.svg" />
+  <div (click)="onAnalytics()">
+    <img *ngIf="isAnalytics" src="./assets/images/analytics-filled.svg" />
+    <img *ngIf="!isAnalytics" src="./assets/images/analytics-outlined.svg" />
   </div>
 
 </div>
