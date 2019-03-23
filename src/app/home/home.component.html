@@ -1,5 +1,14 @@
+<mat-toolbar class="tool-bar">  
+  <!-- <mat-toolbar-row> -->
+    <span>Tool bar</span>
+    <span class="example-spacer"></span>
+    <!-- <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon> -->
+    <button [disabled]="isLoading" class="btn btn-primary" (click)="logout()">Logout</button>
+  <!-- </mat-toolbar-row> -->
+</mat-toolbar>
+
 <div *ngIf="isHome">
-  <button [disabled]="isLoading" class="btn btn-primary" (click)="logout()">Logout</button>
+  <!-- <button [disabled]="isLoading" class="btn btn-primary" (click)="logout()">Logout</button> -->
   <div>Welcome back {{user.name}}</div>
   <div>You are now logged as {{user.email}}</div>
   <div>Last log in {{user.lastLogin | date: 'dd/MM/yyyy H:mm'}}</div>
