@@ -7,25 +7,29 @@
   <!-- </mat-toolbar-row> -->
 </mat-toolbar>
 
-<div *ngIf="isHome">
-  <!-- <button [disabled]="isLoading" class="btn btn-primary" (click)="logout()">Logout</button> -->
-  <div>Welcome back {{user.name}}</div>
-  <div>You are now logged as {{user.email}}</div>
-  <div>Last log in {{user.lastLogin | date: 'dd/MM/yyyy H:mm'}}</div>
-  <div>User Group {{user.userGroupId}}</div>
-  <div>User Role {{user.userRoleId}} {{userRole[user.userRoleId]}}</div>
+<div class="content">
+  <div *ngIf="isHome">
+    <!-- <button [disabled]="isLoading" class="btn btn-primary" (click)="logout()">Logout</button> -->
+    <div>Welcome back {{user.name}}</div>
+    <div>You are now logged as {{user.email}}</div>
+    <div>Last log in {{user.lastLogin | date: 'dd/MM/yyyy H:mm'}}</div>
+    <div>User Group {{user.userGroupId}}</div>
+    <div>User Role {{user.userRoleId}} {{userRole[user.userRoleId]}}</div>
 
-  Records:
-  <app-record></app-record>
+    Records:
+    <app-record></app-record>
+  </div>
+
+  <div *ngIf="isCreate">
+    <app-create-record (reload)="reloadRecord()"></app-create-record>
+  </div>
+
+  <div *ngIf="isAnalytics">
+    This is the analytics page
+  </div>
 </div>
 
-<div *ngIf="isCreate">
-  <app-create-record (reload)="reloadRecord()"></app-create-record>
-</div>
 
-<div *ngIf="isAnalytics">
-  This is the analytics page
-</div>
 
 <!-- <div class="nav-bar">
   <mat-tab-group headerPosition="below" animationDuration="0ms">
