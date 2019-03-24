@@ -24,9 +24,9 @@ export class CreateRecordComponent implements OnInit {
 
   ngOnInit() {
     this.createRecordForm = this.formBuilder.group({
-      title: ['', Validators.required],
-      content: ['', Validators.required],
-      feeling: ['3']
+      title: [{ value: '', disabled: false }, Validators.required],
+      content: [{ value: '', disabled: false }, Validators.required],
+      feeling: [{ value: '3', disabled: false }]
     });
   }
 
@@ -43,16 +43,16 @@ export class CreateRecordComponent implements OnInit {
     console.log('f :', this.f);
 
     this.isLoading = true;
+    this.createRecordForm.disable();
     this.recordService.createRecord(this.f.title.value, this.f.content.value, this.f.feeling.value)
       .subscribe(
         data => {
           console.log('data :', data);
-          this.isLoading = false;
           this.reload.emit();
           this.createRecordForm.reset();
           this.submitted = false;
           this.isLoading = false;
-
+          this.createRecordForm.enable();
           this.notificationService.success('Successfully created record');
         },
         error => {
@@ -60,6 +60,7 @@ export class CreateRecordComponent implements OnInit {
           this.notificationService.error('Failed');
           // this.alertService.error(error);
           this.isLoading = false;
+          this.createRecordForm.enable();
         });
   }
 
