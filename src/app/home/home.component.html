@@ -4,6 +4,22 @@
   <span class="example-spacer"></span>
   <!-- <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon> -->
   <button [disabled]="isLoading" class="btn btn-primary" (click)="logout()">Logout</button>
+
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon class="material-icons-outlined">account_circle</mat-icon>
+    <!-- <mat-icon class="material-icons-outlined" style="margin-bottom: 56px;">account_circle</mat-icon> -->
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>dialpad</mat-icon>
+      <span>Redial</span>
+    </button>
+    <button mat-menu-item disabled>
+      <mat-icon>voicemail</mat-icon>
+      <span>Check voicemail</span>
+    </button>
+    <button mat-menu-item>Item 3</button>
+  </mat-menu>
   <!-- </mat-toolbar-row> -->
 </mat-toolbar>
 
@@ -40,19 +56,25 @@
 </div> -->
 
 <div class="nav-bar">
-  <div (click)="onHome()">
-    <img *ngIf="isHome" src="./assets/images/home-filled.svg" />
-    <img *ngIf="!isHome" src="./assets/images/home-outlined.svg" />
-  </div>
+  <button mat-icon-button (click)="onHome()">
+    <!-- <img *ngIf="isHome" src="./assets/images/home-filled.svg" />
+    <img *ngIf="!isHome" src="./assets/images/home-outlined.svg" /> -->
+    <mat-icon *ngIf="isHome">home</mat-icon>
+    <mat-icon *ngIf="!isHome" class="material-icons-outlined">home</mat-icon>
+  </button>
 
-  <div (click)="onCreate()">
-    <img *ngIf="isCreate" src="./assets/images/create-filled.svg" />
-    <img *ngIf="!isCreate" src="./assets/images/create-outlined.svg" />
-  </div>
+  <button mat-icon-button (click)="onCreate()">
+    <!-- <img *ngIf="isCreate" src="./assets/images/create-filled.svg" />
+    <img *ngIf="!isCreate" src="./assets/images/create-outlined.svg" /> -->
+    <mat-icon *ngIf="isCreate">create</mat-icon>
+    <mat-icon *ngIf="!isCreate" class="material-icons-outlined">create</mat-icon>
+  </button>
 
-  <div (click)="onAnalytics()">
-    <img *ngIf="isAnalytics" src="./assets/images/analytics-filled.svg" />
-    <img *ngIf="!isAnalytics" src="./assets/images/analytics-outlined.svg" />
-  </div>
+  <button mat-icon-button (click)="onAnalytics()">
+    <!-- <img *ngIf="isAnalytics" src="./assets/images/analytics-filled.svg" />
+    <img *ngIf="!isAnalytics" src="./assets/images/analytics-outlined.svg" /> -->
+    <mat-icon *ngIf="isAnalytics">cloud</mat-icon>
+    <mat-icon *ngIf="!isAnalytics" class="material-icons-outlined">cloud</mat-icon>
+  </button>
 
 </div>
