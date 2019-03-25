@@ -53,6 +53,20 @@ export class AuthenticationService {
     this.router.navigate(['/login']);
   }
 
+  public checkTokenStillValid(): Observable<any> {
+    return this.httpBaseService.Get(this.config.apiEndPoint + 'login/check')
+      .pipe(
+        map(response => {
+          console.log('response: ', response);
+          return response;
+        }),
+        catchError(error => {
+          console.log('error: ', error);
+          return throwError(error);
+        })
+      );
+  }
+
   public register(name: string, email: string, password: string): Observable<any> {
     return this.httpBaseService.Post(this.config.apiEndPoint + 'login/create', { name, email, password })
       .pipe(
