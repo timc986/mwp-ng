@@ -1,6 +1,28 @@
-<mat-toolbar class="tool-bar">
+<!-- <mat-drawer-container>
+
+  <mat-drawer #sidenav mode="over">
+    head
+  </mat-drawer>
+
+  <mat-drawer-content>
+    asdfasdfasdfasdf
+  </mat-drawer-content>
+
+</mat-drawer-container> -->
+
+
+
+
+
+
+<mat-toolbar class="tool-bar" *ngIf="true">
+
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
   <!-- <mat-toolbar-row> -->
-  <span>Logo</span>
+  <!-- <span>Logo</span> -->
   <span class="example-spacer"></span>
   <!-- <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon> -->
   <!-- <button [disabled]="isLoading" class="btn btn-primary" (click)="logout()">Logout</button> -->
@@ -8,7 +30,7 @@
   <button mat-icon-button [matMenuTriggerFor]="menu">
     <mat-icon class="material-icons-outlined">account_circle</mat-icon>
     <!-- <mat-icon class="material-icons-outlined" style="color: blue;">account_circle</mat-icon> -->
-  </button>  
+  </button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item>
       <mat-icon class="material-icons-outlined">account_box</mat-icon>
@@ -23,7 +45,7 @@
       <span>Logout</span>
     </button>
   </mat-menu>
-  
+
   <!-- </mat-toolbar-row> -->
 </mat-toolbar>
 
