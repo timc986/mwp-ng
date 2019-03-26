@@ -15,6 +15,7 @@ import { RegisterComponent } from './register/register.component';
 import { RecordComponent } from './record/record.component';
 import { CreateRecordComponent } from './create-record/create-record.component';
 import { RecordService } from './service/record.service';
+import { AccountComponent } from './account/account.component';
 
 export function appConfigFactory(appConfig: AppConfig) {
   return () => appConfig.load();
@@ -27,7 +28,8 @@ export function appConfigFactory(appConfig: AppConfig) {
     LoginComponent,
     RegisterComponent,
     RecordComponent,
-    CreateRecordComponent
+    CreateRecordComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +57,9 @@ export function appConfigFactory(appConfig: AppConfig) {
     },
     AppConfig
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    AccountComponent
+  ]
 })
 export class AppModule { }

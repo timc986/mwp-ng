@@ -1,0 +1,7 @@
+<div class='account-overlay'>
+  <div>Welcome back {{user.name}}</div>
+  <div>You are now logged as {{user.email}}</div>
+  <div>Last log in {{user.lastLogin | date: 'dd/MM/yyyy H:mm'}}</div>
+  <div>User Group {{user.userGroupId}}</div>
+  <div>User Role {{user.userRoleId}} {{userRole[user.userRoleId]}}</div>
+</div>

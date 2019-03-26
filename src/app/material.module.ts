@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 import {
   MatCheckboxModule, MatTreeModule, MatTableModule, MatBadgeModule, MatAutocompleteModule,
@@ -20,6 +21,7 @@ import {
     CommonModule,
     FormsModule,
     BrowserModule,
+    OverlayModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
     MatTreeModule,
@@ -62,6 +64,7 @@ import {
   providers: [{ provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig }],
   exports: [
     CommonModule,
+    OverlayModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,

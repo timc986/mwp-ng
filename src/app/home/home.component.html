@@ -17,9 +17,9 @@
 
 <mat-toolbar class="tool-bar" *ngIf="true">
 
-  <button mat-icon-button >
-  <!-- (click)="sidenav.toggle()" -->
-  
+  <button mat-icon-button>
+    <!-- (click)="sidenav.toggle()" -->
+
     <mat-icon>menu</mat-icon>
   </button>
 
@@ -34,7 +34,7 @@
     <!-- <mat-icon class="material-icons-outlined" style="color: blue;">account_circle</mat-icon> -->
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item>
+    <button mat-menu-item (click)="onAccount()">
       <mat-icon class="material-icons-outlined">account_box</mat-icon>
       <span>Account</span>
     </button>
@@ -54,11 +54,11 @@
 <div class="content">
   <div *ngIf="isHome">
     <!-- <button [disabled]="isLoading" class="btn btn-primary" (click)="logout()">Logout</button> -->
-    <div>Welcome back {{user.name}}</div>
+    <!-- <div>Welcome back {{user.name}}</div>
     <div>You are now logged as {{user.email}}</div>
     <div>Last log in {{user.lastLogin | date: 'dd/MM/yyyy H:mm'}}</div>
     <div>User Group {{user.userGroupId}}</div>
-    <div>User Role {{user.userRoleId}} {{userRole[user.userRoleId]}}</div>
+    <div>User Role {{user.userRoleId}} {{userRole[user.userRoleId]}}</div> -->
 
     Records:
     <app-record></app-record>
