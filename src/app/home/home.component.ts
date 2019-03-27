@@ -21,6 +21,8 @@ export class HomeComponent implements OnInit {
   public isCreate = false;
   public isAnalytics = false;
 
+  public isNight = false;
+
   public isLoading = false;
   public user: UserModel;
 
@@ -56,6 +58,10 @@ export class HomeComponent implements OnInit {
     });
 
     overlayRef.attach(new ComponentPortal(AccountComponent, this.viewContainerRef));
+  }
+
+  onNight() {
+    this.isNight = !this.isNight;
   }
 
   logout() {
