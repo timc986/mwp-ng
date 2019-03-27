@@ -38,12 +38,12 @@
       <mat-icon class="material-icons-outlined">account_box</mat-icon>
       <span>Account</span>
     </button>
-    <button mat-menu-item (click)="onNight()">
+    <button mat-menu-item (click)="onNight()" disabled>
       <mat-icon *ngIf="isNight">brightness_2</mat-icon>
       <mat-icon *ngIf="!isNight" class="material-icons-outlined">brightness_2</mat-icon>
       <span>Night mode</span>
     </button>
-    <button mat-menu-item disabled>
+    <button mat-menu-item (click)="onSettings()">
       <mat-icon class="material-icons-outlined">settings</mat-icon>
       <span>Settings</span>
     </button>

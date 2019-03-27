@@ -9,6 +9,7 @@ import { RecordModel } from '../model/record.model';
 import { RecordComponent } from '../record/record.component';
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -32,7 +33,8 @@ export class HomeComponent implements OnInit {
   constructor(private httpBaseService: HttpBaseService,
     private authenticationService: AuthenticationService,
     public overlay: Overlay,
-    public viewContainerRef: ViewContainerRef) { }
+    public viewContainerRef: ViewContainerRef,
+    private router: Router) { }
 
   ngOnInit() {
     this.user = this.authenticationService.currentUserValue;
@@ -64,6 +66,9 @@ export class HomeComponent implements OnInit {
     this.isNight = !this.isNight;
   }
 
+  onSettings() {
+    this.router.navigate(['/settings']);
+  }
   logout() {
     this.authenticationService.logout();
     console.log('logout');

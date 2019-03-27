@@ -1,3 +1,4 @@
+import { SettingsComponent } from './settings/settings.component';
 import { NoLoginOnlyGuard } from './shared/no-login-only.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -10,7 +11,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent, canActivate: [NoLoginOnlyGuard]},
   { path: 'register', component: RegisterComponent, canActivate: [NoLoginOnlyGuard] },
-
+  { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
 ];
