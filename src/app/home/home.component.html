@@ -92,7 +92,9 @@
   <button mat-icon-button (click)="onHome()">
     <!-- <img *ngIf="isHome" src="./assets/images/home-filled.svg" />
     <img *ngIf="!isHome" src="./assets/images/home-outlined.svg" /> -->
-    <mat-icon *ngIf="isHome">home</mat-icon>
+    <mat-icon *ngIf="isHome"> 
+      <span class="iconify" data-icon="ic:baseline-home" data-inline="false"></span>
+    </mat-icon>
     <mat-icon *ngIf="!isHome" class="material-icons-outlined">home</mat-icon>
   </button>
 
