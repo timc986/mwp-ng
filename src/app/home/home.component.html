@@ -19,8 +19,7 @@
 
   <button mat-icon-button>
     <!-- (click)="sidenav.toggle()" -->
-
-    <mat-icon>menu</mat-icon>
+    <mat-icon class="iconify" data-icon="ic:baseline-menu" data-inline="false"></mat-icon>
   </button>
 
   <!-- <mat-toolbar-row> -->
@@ -30,25 +29,29 @@
   <!-- <button [disabled]="isLoading" class="btn btn-primary" (click)="logout()">Logout</button> -->
 
   <button mat-icon-button [matMenuTriggerFor]="menu">
-    <mat-icon class="material-icons-outlined">account_circle</mat-icon>
+    <mat-icon class="iconify" data-icon="ic:outline-account-circle" data-inline="false"></mat-icon>
     <!-- <mat-icon class="material-icons-outlined" style="color: blue;">account_circle</mat-icon> -->
   </button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="onAccount()">
-      <mat-icon class="material-icons-outlined">account_box</mat-icon>
+      <mat-icon class="iconify" data-icon="ic:outline-account-box" data-inline="false"></mat-icon>
       <span>Account</span>
     </button>
     <button mat-menu-item (click)="onNight()" disabled>
-      <mat-icon *ngIf="isNight">brightness_2</mat-icon>
-      <mat-icon *ngIf="!isNight" class="material-icons-outlined">brightness_2</mat-icon>
+      <mat-icon *ngIf="isNight">
+        <span class="iconify" data-icon="ic:baseline-brightness-2" data-inline="false"></span>
+      </mat-icon>
+      <mat-icon *ngIf="!isNight">
+        <span class="iconify" data-icon="ic:outline-brightness-2" data-inline="false"></span>
+      </mat-icon>
       <span>Night mode</span>
     </button>
     <button mat-menu-item (click)="onSettings()">
-      <mat-icon class="material-icons-outlined">settings</mat-icon>
+      <mat-icon class="iconify" data-icon="ic:outline-settings" data-inline="false"></mat-icon>
       <span>Settings</span>
     </button>
     <button mat-menu-item (click)="logout()">
-      <mat-icon>exit_to_app</mat-icon>
+      <mat-icon class="iconify" data-icon="ic:baseline-exit-to-app" data-inline="false"></mat-icon>
       <span>Logout</span>
     </button>
   </mat-menu>
@@ -92,24 +95,36 @@
   <button mat-icon-button (click)="onHome()">
     <!-- <img *ngIf="isHome" src="./assets/images/home-filled.svg" />
     <img *ngIf="!isHome" src="./assets/images/home-outlined.svg" /> -->
-    <mat-icon *ngIf="isHome"> 
+    <mat-icon *ngIf="isHome">
       <span class="iconify" data-icon="ic:baseline-home" data-inline="false"></span>
     </mat-icon>
-    <mat-icon *ngIf="!isHome" class="material-icons-outlined">home</mat-icon>
+    <mat-icon *ngIf="!isHome">
+      <span class="iconify" data-icon="ic:outline-home" data-inline="false"></span>
+    </mat-icon>
   </button>
 
   <button mat-icon-button (click)="onCreate()">
     <!-- <img *ngIf="isCreate" src="./assets/images/create-filled.svg" />
     <img *ngIf="!isCreate" src="./assets/images/create-outlined.svg" /> -->
-    <mat-icon *ngIf="isCreate">create</mat-icon>
-    <mat-icon *ngIf="!isCreate" class="material-icons-outlined">create</mat-icon>
+    <!-- <mat-icon *ngIf="isCreate">create</mat-icon>
+    <mat-icon *ngIf="!isCreate" class="material-icons-outlined">create</mat-icon> -->
+    <mat-icon *ngIf="isCreate">
+      <span class="iconify" data-icon="ic:baseline-create" data-inline="false"></span>
+    </mat-icon>
+    <mat-icon *ngIf="!isCreate">
+      <span class="iconify" data-icon="ic:outline-create" data-inline="false"></span>
+    </mat-icon>
   </button>
 
   <button mat-icon-button (click)="onAnalytics()">
     <!-- <img *ngIf="isAnalytics" src="./assets/images/analytics-filled.svg" />
     <img *ngIf="!isAnalytics" src="./assets/images/analytics-outlined.svg" /> -->
-    <mat-icon *ngIf="isAnalytics">cloud</mat-icon>
-    <mat-icon *ngIf="!isAnalytics" class="material-icons-outlined">cloud</mat-icon>
+    <mat-icon *ngIf="isAnalytics">
+      <span class="iconify" data-icon="ic:baseline-cloud" data-inline="false"></span>
+    </mat-icon>
+    <mat-icon *ngIf="!isAnalytics">
+      <span class="iconify" data-icon="ic:outline-cloud" data-inline="false"></span>
+    </mat-icon>
   </button>
 
 </div>
