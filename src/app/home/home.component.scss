@@ -10,7 +10,8 @@
   align-items: center;
   align-content: center;
   justify-content: space-around;
-  background-color: #cfd3d6;
+  // background-color: #cfd3d6;
+  background-color: #2A506F;
   line-height: 40px;
   height: 40px;
   z-index: 999;
@@ -22,7 +23,7 @@
 
   .example-spacer {
     flex: 1 1 auto;
-  }
+  }  
 }
 
 .content {
@@ -41,9 +42,14 @@
   align-items: center;
   align-content: center;
   justify-content: space-around;
-  background-color: #cfd3d6;
+  // background-color: #cfd3d6;
+  background-color: #2A506F;
   line-height: 40px;
   height: 40px;
   z-index: 999;
   border-top: 1px solid lightgray;
+}
+
+#white-icon{
+  color: white;
 }

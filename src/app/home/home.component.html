@@ -17,7 +17,7 @@
 
 <mat-toolbar class="tool-bar" *ngIf="true">
 
-  <button mat-icon-button>
+  <button mat-icon-button id="white-icon" >
     <!-- (click)="sidenav.toggle()" -->
     <mat-icon class="iconify" data-icon="ic:baseline-menu" data-inline="false"></mat-icon>
   </button>
@@ -28,7 +28,7 @@
   <!-- <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon> -->
   <!-- <button [disabled]="isLoading" class="btn btn-primary" (click)="logout()">Logout</button> -->
 
-  <button mat-icon-button [matMenuTriggerFor]="menu">
+  <button mat-icon-button [matMenuTriggerFor]="menu" id="white-icon" >
     <mat-icon class="iconify" data-icon="ic:outline-account-circle" data-inline="false"></mat-icon>
     <!-- <mat-icon class="material-icons-outlined" style="color: blue;">account_circle</mat-icon> -->
   </button>
@@ -92,7 +92,7 @@
 </div> -->
 
 <div class="nav-bar">
-  <button mat-icon-button (click)="onHome()">
+  <button mat-icon-button (click)="onHome()" id="white-icon">
     <!-- <img *ngIf="isHome" src="./assets/images/home-filled.svg" />
     <img *ngIf="!isHome" src="./assets/images/home-outlined.svg" /> -->
     <mat-icon *ngIf="isHome">
@@ -103,7 +103,7 @@
     </mat-icon>
   </button>
 
-  <button mat-icon-button (click)="onCreate()">
+  <button mat-icon-button (click)="onCreate()" id="white-icon">
     <!-- <img *ngIf="isCreate" src="./assets/images/create-filled.svg" />
     <img *ngIf="!isCreate" src="./assets/images/create-outlined.svg" /> -->
     <!-- <mat-icon *ngIf="isCreate">create</mat-icon>
@@ -116,7 +116,7 @@
     </mat-icon>
   </button>
 
-  <button mat-icon-button (click)="onAnalytics()">
+  <button mat-icon-button (click)="onAnalytics()" id="white-icon">
     <!-- <img *ngIf="isAnalytics" src="./assets/images/analytics-filled.svg" />
     <img *ngIf="!isAnalytics" src="./assets/images/analytics-outlined.svg" /> -->
     <mat-icon *ngIf="isAnalytics">
