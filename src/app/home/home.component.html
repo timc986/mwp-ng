@@ -17,10 +17,57 @@
 
 <mat-toolbar class="tool-bar" *ngIf="true">
 
-  <button mat-icon-button id="white-icon" >
+  <button mat-icon-button id="white-icon">
     <!-- (click)="sidenav.toggle()" -->
     <mat-icon class="iconify" data-icon="ic:baseline-menu" data-inline="false"></mat-icon>
   </button>
+
+
+
+  <div class="nav-bar-top">
+    <button mat-button (click)="onHome()" id="white-icon">
+      <!-- <img *ngIf="isHome" src="./assets/images/home-filled.svg" />
+      <img *ngIf="!isHome" src="./assets/images/home-outlined.svg" /> -->
+      <mat-icon *ngIf="isHome">
+        <span class="iconify" data-icon="ic:baseline-home" data-inline="false"></span>
+      </mat-icon>
+      <mat-icon *ngIf="!isHome">
+        <span class="iconify" data-icon="ic:outline-home" data-inline="false"></span>
+      </mat-icon>
+      Home
+    </button>
+
+    <button mat-button (click)="onCreate()" id="white-icon">
+      <!-- <img *ngIf="isCreate" src="./assets/images/create-filled.svg" />
+      <img *ngIf="!isCreate" src="./assets/images/create-outlined.svg" /> -->
+      <!-- <mat-icon *ngIf="isCreate">create</mat-icon>
+      <mat-icon *ngIf="!isCreate" class="material-icons-outlined">create</mat-icon> -->
+      <mat-icon *ngIf="isCreate">
+        <span class="iconify" data-icon="ic:baseline-create" data-inline="false"></span>
+      </mat-icon>
+      <mat-icon *ngIf="!isCreate">
+        <span class="iconify" data-icon="ic:outline-create" data-inline="false"></span>
+      </mat-icon>
+      Create
+    </button>
+
+    <button mat-button (click)="onAnalytics()" id="white-icon">
+      <!-- <img *ngIf="isAnalytics" src="./assets/images/analytics-filled.svg" />
+      <img *ngIf="!isAnalytics" src="./assets/images/analytics-outlined.svg" /> -->
+      <mat-icon *ngIf="isAnalytics">
+        <span class="iconify" data-icon="ic:baseline-cloud" data-inline="false"></span>
+      </mat-icon>
+      <mat-icon *ngIf="!isAnalytics">
+        <span class="iconify" data-icon="ic:outline-cloud" data-inline="false"></span>
+      </mat-icon>
+      Analytics
+    </button>
+
+  </div>
+
+
+
+
 
   <!-- <mat-toolbar-row> -->
   <!-- <span>Logo</span> -->
@@ -28,7 +75,12 @@
   <!-- <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon> -->
   <!-- <button [disabled]="isLoading" class="btn btn-primary" (click)="logout()">Logout</button> -->
 
-  <button mat-icon-button [matMenuTriggerFor]="menu" id="white-icon" >
+
+
+
+
+
+  <button mat-icon-button [matMenuTriggerFor]="menu" id="white-icon">
     <mat-icon class="iconify" data-icon="ic:outline-account-circle" data-inline="false"></mat-icon>
     <!-- <mat-icon class="material-icons-outlined" style="color: blue;">account_circle</mat-icon> -->
   </button>
@@ -59,6 +111,15 @@
   <!-- </mat-toolbar-row> -->
 </mat-toolbar>
 
+
+
+
+
+
+
+
+
+
 <div class="content">
   <div *ngIf="isHome">
     <!-- <button [disabled]="isLoading" class="btn btn-primary" (click)="logout()">Logout</button> -->
@@ -80,6 +141,21 @@
     This is the analytics page
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

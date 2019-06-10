@@ -50,6 +50,17 @@
   border-top: 1px solid lightgray;
 }
 
+.nav-bar-top {  
+  display: flex;
+  flex-direction: row;
+  line-height: 40px;
+  height: 40px;
+  
+  button {
+    width: auto;
+  }
+}
+
 #white-icon{
   color: white;
 }
